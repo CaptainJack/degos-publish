@@ -1,0 +1,62 @@
+buildscript {
+	ext {
+		junitPlatformVersion = '1.0.1'
+		junitJupiterVersion = '5.0.1'
+	}
+	repositories { jcenter() }
+	dependencies {
+		classpath "org.junit.platform:junit-platform-gradle-plugin:${junitPlatformVersion}"
+	}
+}
+
+plugins {
+	id 'java-gradle-plugin'
+	id 'maven-publish'
+	id 'nebula.release' version '6.0.2'
+}
+
+apply plugin: 'org.junit.platform.gradle.plugin'
+
+group 'ru.capjack.degos'
+
+repositories {
+	maven {
+		url 'http://artifactory.capjack.ru/public'
+	}
+}
+
+dependencies {
+	compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.1'
+	compile 'com.fasterxml.jackson.core:jackson-databind:2.9.1'
+	
+	testCompile "org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}"
+	testCompile "org.junit.jupiter:junit-jupiter-params:${junitJupiterVersion}"
+	
+	testCompileOnly 'org.apiguardian:apiguardian-api:1.0.0'
+	
+	testRuntime "org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}"
+}
+
+gradlePlugin {
+	plugins {
+		DegosPublish {
+			id = 'capjack.degos-publish'
+			implementationClass = 'ru.capjack.degos.publish.DegosPublishPlugin'
+		}
+	}
+}
+
+publishing {
+	repositories {
+		maven {
+			url(version.toString().matches(/^\d+\.\d+\.\d+$/)
+				? 'http://artifactory.capjack.ru/public-releases'
+				: 'http://artifactory.capjack.ru/public-snapshots'
+			)
+			credentials {
+				username capjackPublishUsername
+				password capjackPublishPassword
+			}
+		}
+	}
+}

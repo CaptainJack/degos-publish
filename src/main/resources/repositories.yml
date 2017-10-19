@@ -1,0 +1,19 @@
+- name: CapjackPublicReleases
+  url: http://artifactory.capjack.ru/public-releases
+  secret: false
+  releases: true
+
+- name: CapjackPublicSnapshots
+  url: http://artifactory.capjack.ru/public-snapshots
+  secret: false
+  releases: false
+
+- name: CapjackPrivateReleases
+  url: http://artifactory.capjack.ru/private-releases
+  secret: true
+  releases: true
+
+- name: CapjackPrivateSnapshots
+  url: http://artifactory.capjack.ru/private-snapshots
+  secret: true
+  releases: false

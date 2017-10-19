@@ -1,3 +1,5 @@
+group ru.capjack.degos
+
 buildscript {
 	ext {
 		junitPlatformVersion = '1.0.1'
@@ -15,8 +17,6 @@ plugins {
 }
 
 apply plugin: 'org.junit.platform.gradle.plugin'
-
-group 'ru.capjack.degos'
 
 repositories {
 	maven {

@@ -12,7 +12,6 @@ buildscript {
 plugins {
 	id 'java-gradle-plugin'
 	id 'maven-publish'
-	id 'nebula.release' version '6.0.2'
 }
 
 apply plugin: 'org.junit.platform.gradle.plugin'

@@ -1,39 +1,30 @@
 buildscript {
-	ext {
-		junitPlatformVersion = '1.0.1'
-		junitJupiterVersion = '5.0.1'
+	repositories {
+		maven { url 'http://artifactory.capjack.ru/public' }
 	}
-	repositories { jcenter() }
 	dependencies {
-		classpath "org.junit.platform:junit-platform-gradle-plugin:${junitPlatformVersion}"
+		classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.1'
 	}
 }
-
-plugins {
-	id 'java-gradle-plugin'
-	id 'maven-publish'
-}
-
+apply plugin: 'java-gradle-plugin'
+apply plugin: 'maven-publish'
 apply plugin: 'org.junit.platform.gradle.plugin'
 
 group 'ru.capjack.degos'
 
+
 repositories {
-	maven {
-		url 'http://artifactory.capjack.ru/public'
-	}
+	maven { url 'http://artifactory.capjack.ru/public' }
 }
 
 dependencies {
 	compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.1'
 	compile 'com.fasterxml.jackson.core:jackson-databind:2.9.1'
 	
-	testCompile "org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}"
-	testCompile "org.junit.jupiter:junit-jupiter-params:${junitJupiterVersion}"
-	
+	testCompile 'org.junit.jupiter:junit-jupiter-api:5.0.1'
+	testCompile 'org.junit.jupiter:junit-jupiter-params:5.0.1'
 	testCompileOnly 'org.apiguardian:apiguardian-api:1.0.0'
-	
-	testRuntime "org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}"
+	testRuntime 'org.junit.jupiter:junit-jupiter-engine:5.0.1'
 }
 
 gradlePlugin {

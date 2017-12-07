@@ -59,7 +59,7 @@ public class DegosPublishPlugin implements Plugin<Project> {
 	}
 	
 	private boolean defineIsReleaseByVersion(String version) {
-		return version.matches("^\\d+\\.\\d+\\.\\d+$");
+		return !version.contains("SNAPSHOT");
 	}
 	
 	private void addRepository(RepositoryHandler repositories, RepositoryConfig config, String username, String password) {

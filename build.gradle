@@ -39,9 +39,9 @@ gradlePlugin {
 publishing {
 	repositories {
 		maven {
-			url(version.toString().matches(/^\d+\.\d+\.\d+$/)
-				? 'http://artifactory.capjack.ru/public-releases'
-				: 'http://artifactory.capjack.ru/public-snapshots'
+			url(version.toString().contains("SNAPSHOT")
+				? 'http://artifactory.capjack.ru/public-snapshots'
+				: 'http://artifactory.capjack.ru/public-releases'
 			)
 			credentials {
 				username capjackRepositoryUsername

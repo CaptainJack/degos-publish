@@ -30,7 +30,7 @@ dependencies {
 gradlePlugin {
 	plugins {
 		DegosPublish {
-			id = 'capjack.degos-publish'
+			id = 'ru.capjack.degos-publish'
 			implementationClass = 'ru.capjack.degos.publish.DegosPublishPlugin'
 		}
 	}

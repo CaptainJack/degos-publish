@@ -26,7 +26,7 @@ open class DegosPublishPlugin : Plugin<Project> {
 		)
 		
 		if (project.plugins.hasPlugin("nebula.release")) {
-			project.tasks["postRelease"].dependsOn("publish")
+			project.tasks["postRelease"].finalizedBy("publish")
 		}
 		
 		project.afterEvaluate(::applyAfterEvaluate)

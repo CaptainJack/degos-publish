@@ -34,7 +34,7 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
-tasks["postRelease"].dependsOn("publish")
+tasks["postRelease"].finalizedBy("publish")
 
 gradlePlugin {
 	(plugins) {

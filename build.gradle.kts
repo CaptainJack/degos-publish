@@ -22,7 +22,6 @@ dependencies {
 	
 	testImplementation("org.junit.jupiter:junit-jupiter-api:5.1.0")
 	testImplementation("org.junit.jupiter:junit-jupiter-params:5.0.1")
-	testImplementation("org.apiguardian:apiguardian-api:1.0.0")
 	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.1.0")
 }
 

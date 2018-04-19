@@ -31,14 +31,14 @@ open class DegosPublishPlugin : Plugin<Project> {
 			publication = project.name.split(' ', '_', '-', '.').joinToString("") { it.capitalize() }
 		}
 		
-		if (project.plugins.hasPlugin("nebula.release")) {
-			project.tasks["postRelease"].finalizedBy("publish")
-		}
-		
 		project.afterEvaluate(::applyAfterEvaluate)
 	}
 	
 	private fun applyAfterEvaluate(project: Project) {
+		if (project.plugins.hasPlugin("nebula.release")) {
+			project.tasks["postRelease"].finalizedBy("publish")
+		}
+		
 		val degosPublishExtension = project.extensions.getByType(DegosPublishExtension::class.java)
 		
 		val config = defineRepositoryConfig(

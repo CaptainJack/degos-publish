@@ -1,11 +1,19 @@
 package ru.capjack.degos.publish
 
-interface DegosPublishExtension {
-	var username: String
-	var password: String
-	var private: Boolean
+open class DegosPublishExtension {
+	var private: Boolean = false
+	var username: String? = null
+	var password: String? = null
+	var publication: String? = null
+	var publicationSources: PublicationSource = PublicationSource.RELEASE
 	
 	companion object {
 		const val NAME = "degosPublish"
+	}
+	
+	enum class PublicationSource {
+		NEVER,
+		ALWAYS,
+		RELEASE
 	}
 }

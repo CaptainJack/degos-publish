@@ -37,7 +37,7 @@ tasks["postRelease"].finalizedBy("publish")
 
 gradlePlugin {
 	(plugins) {
-		"degos" {
+		"DegosPublish" {
 			id = "ru.capjack.degos-publish"
 			implementationClass = "ru.capjack.degos.publish.DegosPublishPlugin"
 		}

@@ -35,8 +35,8 @@ open class DegosPublishPlugin : Plugin<Project> {
 	}
 	
 	private fun applyAfterEvaluate(project: Project) {
-		if (project.plugins.hasPlugin("nebula.release")) {
-			project.tasks["postRelease"].finalizedBy("publish")
+		if (project.rootProject.plugins.hasPlugin("nebula.release")) {
+			project.rootProject.tasks["postRelease"].finalizedBy("publish")
 		}
 		
 		val degosPublishExtension = project.extensions.getByType(DegosPublishExtension::class.java)

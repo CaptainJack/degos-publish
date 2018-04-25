@@ -7,10 +7,6 @@ open class DegosPublishExtension {
 	var publication: String? = null
 	var publicationSources: PublicationSource = PublicationSource.RELEASE
 	
-	companion object {
-		const val NAME = "degosPublish"
-	}
-	
 	enum class PublicationSource {
 		NEVER,
 		ALWAYS,

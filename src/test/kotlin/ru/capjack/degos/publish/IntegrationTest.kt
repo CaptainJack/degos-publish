@@ -16,34 +16,33 @@ class IntegrationTest {
 	internal fun `Setup credentials from properties`() {
 		val output = run(
 			listOf(
-				"plugins {id 'ru.capjack.degos-publish'}",
-				"println degosPublish.username",
-				"println degosPublish.password"
+				"plugins {id 'ru.capjack.degos.publish'}",
+				"println '!' + degosPublish.username",
+				"println '!' + degosPublish.password"
 			),
-			"-Pcapjack.artifactory.username=username123", "-Pcapjack.artifactory.password=password123"
+			"-PdegosPublish.username=username123", "-PdegosPublish.password=password123"
 		).output
 		
-		assertTrue(output.contains("username123"))
-		assertTrue(output.contains("password123"))
+		assertTrue(output.contains("!username123") && output.contains("!password123"))
 	}
 	
 	@ParameterizedTest
 	@MethodSource("configureAndCheckExistsPublishingRepositoryArgumentsProvider")
 	internal fun `Configure and check exists publishing repository`(version: String, private: Boolean, repositoryName: String) {
 		val build = listOf(
-			"plugins {id 'ru.capjack.degos-publish'}",
+			"plugins {id 'ru.capjack.degos.publish'}",
 			"version '$version'",
 			"degosPublish.private = $private",
 			"task printPublishingRepositories {",
 			" doLast {",
-			"  publishing.repositories.forEach { println it.name }",
+			"  publishing.repositories.forEach { println '!' + it.name }",
 			" }",
 			"}"
 		)
 		
 		val output = run(build, "printPublishingRepositories").output
 		
-		assertTrue(output.contains(repositoryName), "Output\n---\n$output\n---\n")
+		assertTrue(output.contains("!$repositoryName"))
 	}
 	
 	private fun run(build: List<String>, vararg arguments: String): BuildResult {

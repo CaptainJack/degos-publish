@@ -38,7 +38,7 @@ tasks["postRelease"].finalizedBy("publish")
 gradlePlugin {
 	(plugins) {
 		"DegosPublish" {
-			id = "ru.capjack.degos-publish"
+			id = "ru.capjack.degos.publish"
 			implementationClass = "ru.capjack.degos.publish.DegosPublishPlugin"
 		}
 	}
@@ -53,8 +53,8 @@ publishing {
 		
 		maven(url) {
 			credentials {
-				username = project.property("capjack.artifactory.username") as String
-				password = project.property("capjack.artifactory.password") as String
+				username = findProperty("degosPublish.username") as String?
+				password = findProperty("degosPublish.password") as String?
 			}
 		}
 	}

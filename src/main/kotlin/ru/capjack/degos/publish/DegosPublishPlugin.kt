@@ -18,8 +18,8 @@ import org.gradle.kotlin.dsl.the
 
 open class DegosPublishPlugin : Plugin<Project> {
 	companion object {
-		private const val PROPERTY_USERNAME = "capjack.artifactory.username"
-		private const val PROPERTY_PASSWORD = "capjack.artifactory.password"
+		private const val PROPERTY_USERNAME = "degosPublish.username"
+		private const val PROPERTY_PASSWORD = "degosPublish.password"
 	}
 	
 	override fun apply(project: Project) {

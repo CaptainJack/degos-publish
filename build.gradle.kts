@@ -4,7 +4,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 group = "ru.capjack.degos"
 
 plugins {
-	kotlin("jvm") version "1.2.31"
+	kotlin("jvm") version "1.2.40"
 	`kotlin-dsl`
 	`java-gradle-plugin`
 	`maven-publish`

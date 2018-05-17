@@ -5,11 +5,11 @@ open class DegosPublishExtension {
 	var username: String? = null
 	var password: String? = null
 	var publication: String? = null
-	var publicationSources: PublicationSource = PublicationSource.RELEASE
+	var publicationSources: PublicationSource = PublicationSource.ALWAYS
 	
 	enum class PublicationSource {
-		NEVER,
 		ALWAYS,
-		RELEASE
+		RELEASE,
+		NEVER
 	}
 }
